@@ -10,7 +10,7 @@ class Profile(models.Model):
     age = models.IntegerField(null=True, blank=True)
     is_guest = models.BooleanField(default=True)
     is_host = models.BooleanField(default=False)
-    knowledge = models.IntegerField(choices=KNOWLEDGE_CHOICES)
+    knowledge = models.IntegerField(choices=KNOWLEDGE_CHOICES, null=True, blank=True)
     def __str__(self):
         return self.user.username
 
@@ -32,6 +32,6 @@ class Stand(models.Model):
 class StandDescription(models.Model):
     stand = models.ForeignKey(Stand, on_delete=models.SET_NULL, null=True)
     description = models.TextField(blank=True, null=True)
-    knowledge = models.IntegerField(choices=KNOWLEDGE_CHOICES)
+    knowledge = models.IntegerField(choices=KNOWLEDGE_CHOICES, null=True, blank=True)
     def __str__(self):
         return self.stand.name + self.knowledge
