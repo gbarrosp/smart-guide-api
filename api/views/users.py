@@ -9,7 +9,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework.views import APIView
 from api.serializers import CreateUserSerializer
-
+from .models import Profile
 
 class CreateUserAPIView(CreateAPIView):
     serializer_class = CreateUserSerializer
