@@ -46,5 +46,4 @@ class StandDescriptionDetail(generics.RetrieveUpdateDestroyAPIView):
         stand_id = self.kwargs.get('stand')
         knowledge_id = self.kwargs.get('knowledge')
         description = StandDescription.objects.filter(stand__id=stand_id, knowledge=knowledge_id).first()
-
         return description

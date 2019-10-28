@@ -40,7 +40,7 @@ class StandSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StandDescriptionSerializer(serializers.ModelSerializer):
-
+    stand_name = serializers.CharField(source='stand.name', read_only=True)
     class Meta:
         model = StandDescription
-        fields = '__all__'
+        fields = ('id','knowledge','description','stand_name')

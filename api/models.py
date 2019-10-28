@@ -22,7 +22,7 @@ class Question(models.Model):
         return self.title
 
 class Stand(models.Model):
-    name = models.CharField(max_length=10, blank=True, null=True)
+    name = models.CharField(max_length=80, blank=True, null=True)
     # image = models.ImageField(upload_to = 'stand_images/', default = 'stand_images/None/no-img.jpg')
     owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
 

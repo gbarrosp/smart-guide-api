@@ -8,6 +8,7 @@ urlpatterns = [
     path('auth/login/', obtain_auth_token, name='auth_user_login'),
     path('auth/register/', CreateUserAPIView.as_view(), name='auth_user_create'),
     path('auth/logout/', LogoutUserAPIView.as_view(),name='auth_user_logout'),
+    path('user/<int:pk>/', ProfileDetail.as_view(),name='user-detail'),
     #Questions
     path('questions/', QuestionsList.as_view(),name='questions_list'),
     path('questions/<int:pk>/', QuestionDetail.as_view(),name='question-detail'),
