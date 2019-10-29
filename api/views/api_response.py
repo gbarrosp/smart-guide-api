@@ -12,9 +12,15 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
-class StandList(generics.ListCreateAPIView):
+class StandList(generics.ListAPIView):
     queryset = Stand.objects.all()
     serializer_class = StandSerializer
+    
+    def get_queryset(self):
+        owner_id = self.kwargs.get('user_id')
+        stands = Stand.objects.filter(owner__id=owner_id)
+        import pdb; pdb.set_trace()
+        return stands
 
 class StandDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Stand.objects.all()
@@ -26,13 +32,18 @@ class StandDetail(generics.RetrieveUpdateDestroyAPIView):
     #     import pdb; pdb.set_trace()
     #     return stands
 
-class ProfileList(generics.ListCreateAPIView):
+class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
-class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+class ProfileDetail(generics.RetrieveAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+    def get_object(self):
+        username = self.kwargs.get('username')
+        user = Profile.objects.filter(username=username).first()
+        return user
 
 class StandDescriptionList(generics.ListCreateAPIView):
     queryset = StandDescription.objects.all()

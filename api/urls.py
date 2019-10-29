@@ -8,12 +8,12 @@ urlpatterns = [
     path('auth/login/', obtain_auth_token, name='auth_user_login'),
     path('auth/register/', CreateUserAPIView.as_view(), name='auth_user_create'),
     path('auth/logout/', LogoutUserAPIView.as_view(),name='auth_user_logout'),
-    path('user/<int:pk>/', ProfileDetail.as_view(),name='user-detail'),
+    path('user/<str:username>/', ProfileDetail.as_view(),name='user-detail'),
     #Questions
     path('questions/', QuestionsList.as_view(),name='questions_list'),
     path('questions/<int:pk>/', QuestionDetail.as_view(),name='question-detail'),
     #Stands
-    path('stands/', StandList.as_view(),name='stand_list'),
+    path('stands/list/<int:user_id>', StandList.as_view(),name='stand_list'),
     path('stands/<int:pk>/', StandDetail.as_view(),name='stand-detail'),
     #StandDescriptions
     path('descriptions/', StandDescriptionList.as_view(),name='descriptions_list'),
