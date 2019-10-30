@@ -19,7 +19,6 @@ class StandList(generics.ListAPIView):
     def get_queryset(self):
         owner_id = self.kwargs.get('user_id')
         stands = Stand.objects.filter(owner__id=owner_id)
-        import pdb; pdb.set_trace()
         return stands
 
 class StandDetail(generics.RetrieveUpdateDestroyAPIView):
