@@ -14,6 +14,8 @@ class CreateUserSerializer(serializers.ModelSerializer):
         read_only_fields = ('is_staff', 'is_superuser', 'is_active',)
 
     def create(self, validated_data):
+        print('Serializer')
+        print(self, validated_data)
         user = super(CreateUserSerializer, self).create(validated_data)
         user.set_password(validated_data['password'])
         user.save()

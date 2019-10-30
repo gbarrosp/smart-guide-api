@@ -9,6 +9,7 @@ urlpatterns = [
     path('auth/register/', CreateUserAPIView.as_view(), name='auth_user_create'),
     path('auth/logout/', LogoutUserAPIView.as_view(),name='auth_user_logout'),
     path('user/<str:username>/', ProfileDetail.as_view(),name='user-detail'),
+    path('user/', ProfileUpdate.as_view(),name='user-account'),
     #Questions
     path('questions/', QuestionsList.as_view(),name='questions_list'),
     path('questions/<int:pk>/', QuestionDetail.as_view(),name='question-detail'),

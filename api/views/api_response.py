@@ -1,6 +1,9 @@
-from rest_framework import generics
+from rest_framework import generics, status
 from api.models import Question, Profile, Stand, StandDescription
 from api.serializers import *
+from rest_framework.response import Response
+from api.models import Profile
+
 # from django.views.decorators.csrf import csrf_exempt
 # from rest_framework.decorators import api_view
 
@@ -26,9 +29,17 @@ class StandAdd(generics.ListCreateAPIView):
     serializer_class = StandSerializer
 
 
-class ProfileList(generics.ListAPIView):
+class ProfileUpdate(generics.CreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+    def post(self, request, format=None):
+        profile = Profile.objects.get(username=request.data['username'])
+        profile.age = request.data['age']
+        profile.name = request.data['name']
+        profile.knowledge = request.data['knowledge']
+        profile.save()
+        return Response(status=status.HTTP_200_OK)
 
 class ProfileDetail(generics.RetrieveAPIView):
     queryset = Profile.objects.all()
