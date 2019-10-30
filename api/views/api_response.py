@@ -21,15 +21,10 @@ class StandList(generics.ListAPIView):
         stands = Stand.objects.filter(owner__id=owner_id)
         return stands
 
-class StandDetail(generics.RetrieveUpdateDestroyAPIView):
+class StandDetail(generics.ListCreateAPIView):
     queryset = Stand.objects.all()
     serializer_class = StandSerializer
 
-    # def get_queryset(self):
-    #     owner_id = self.kwargs.get('pk')
-    #     stands = Stand.objects.filter(owner__id=owner_id)
-    #     import pdb; pdb.set_trace()
-    #     return stands
 
 class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.all()

@@ -14,7 +14,7 @@ urlpatterns = [
     path('questions/<int:pk>/', QuestionDetail.as_view(),name='question-detail'),
     #Stands
     path('stands/list/<int:user_id>', StandList.as_view(),name='stand_list'),
-    path('stands/<int:pk>/', StandDetail.as_view(),name='stand-detail'),
+    path('stands/', StandDetail.as_view(),name='stand-detail'),
     #StandDescriptions
     path('descriptions/', StandDescriptionList.as_view(),name='descriptions_list'),
     path('descriptions/<int:stand>/<int:knowledge>/', StandDescriptionDetail.as_view(),name='description-detail'),
