@@ -44,3 +44,9 @@ class StandDescriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = StandDescription
         fields = ('id','knowledge','description','stand_name')
+
+class AddDescriptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = StandDescription
+        fields = '__all__'

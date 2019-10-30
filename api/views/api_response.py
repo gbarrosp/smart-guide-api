@@ -21,7 +21,7 @@ class StandList(generics.ListAPIView):
         stands = Stand.objects.filter(owner__id=owner_id)
         return stands
 
-class StandDetail(generics.ListCreateAPIView):
+class StandAdd(generics.ListCreateAPIView):
     queryset = Stand.objects.all()
     serializer_class = StandSerializer
 
@@ -39,9 +39,9 @@ class ProfileDetail(generics.RetrieveAPIView):
         user = Profile.objects.filter(username=username).first()
         return user
 
-class StandDescriptionList(generics.ListCreateAPIView):
+class StandDescriptionAdd(generics.ListCreateAPIView):
     queryset = StandDescription.objects.all()
-    serializer_class = StandDescriptionSerializer
+    serializer_class = AddDescriptionSerializer
 
 class StandDescriptionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = StandDescription.objects.all()
